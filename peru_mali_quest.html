@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peru & Mali Quest — 5º Ano</title>
+<style>
+:root{
+  --ink:#172033; --muted:#647087; --paper:#fffdf8; --bg:#f3f6fb;
+  --purple:#7657e8; --orange:#ff8b4a; --green:#36b37e; --blue:#4f8df7;
+  --yellow:#ffd166; --red:#ef6670; --line:#e5e9f2;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at 10% 0%,#e8e1ff 0 18%,transparent 38%),radial-gradient(circle at 100% 10%,#ffe8d7 0 15%,transparent 36%),var(--bg);color:var(--ink)}
+button{font:inherit}
+.app{max-width:1050px;margin:auto;padding:22px 16px 50px}
+.hero{background:var(--ink);color:#fff;border-radius:30px;padding:28px;position:relative;overflow:hidden;box-shadow:0 20px 50px #18203320}
+.hero:after{content:"";position:absolute;width:230px;height:230px;border-radius:50%;right:-60px;top:-90px;background:var(--orange);opacity:.9}
+.hero .mini{position:relative;z-index:1;color:#cbd3e5;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+.hero h1{position:relative;z-index:1;font-size:clamp(34px,7vw,62px);line-height:.95;margin:10px 0 12px;max-width:700px}
+.hero p{position:relative;z-index:1;max-width:680px;color:#dce2ef;font-size:17px;margin:0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px;position:relative;z-index:1}
+.stat{background:#ffffff12;border:1px solid #ffffff1c;border-radius:16px;padding:12px}.stat b{display:block;font-size:22px}.stat span{font-size:12px;color:#bfc8d9}
+.nav{display:flex;gap:8px;overflow:auto;padding:14px 2px;position:sticky;top:0;background:#f3f6fbdd;backdrop-filter:blur(10px);z-index:5}
+.nav button{white-space:nowrap;border:1px solid var(--line);background:white;border-radius:999px;padding:9px 14px;font-weight:800;color:var(--muted);cursor:pointer}
+.nav button.active{background:var(--ink);color:white}
+.section{display:none}.section.active{display:block}
+.section-head{margin:22px 0 14px}.eyebrow{font-size:12px;font-weight:900;text-transform:uppercase;color:var(--purple);letter-spacing:.1em}.section h2{font-size:34px;margin:4px 0}.section-head p{color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 8px 24px #26334b0b}
+.card h3{margin:0 0 8px;font-size:21px}.card p{line-height:1.55;margin:8px 0}.tag{display:inline-block;border-radius:999px;padding:5px 9px;background:#eeeaff;color:#5b42c6;font-size:11px;font-weight:900;margin-bottom:8px}
+.english{font-weight:850}.translation{color:var(--muted);font-size:.92em;margin-top:2px!important}
+.fact{border-left:5px solid var(--orange);padding-left:12px}
+.quiz{margin-top:18px}
+.q{background:white;border:1px solid var(--line);border-radius:20px;padding:18px;margin:12px 0}
+.q.correct{border-color:#9de0c4;background:#f1fff8}.q.wrong{border-color:#f2a2a8;background:#fff5f5}
+.qnum{font-size:11px;font-weight:900;color:var(--purple);text-transform:uppercase}.q h3{margin:6px 0 12px;font-size:18px}
+.options{display:grid;gap:8px}.option{border:1px solid var(--line);background:#fbfcff;text-align:left;border-radius:13px;padding:11px 13px;cursor:pointer}.option:hover{border-color:var(--purple);transform:translateY(-1px)}.option.selected{border-color:var(--purple);background:#f0edff}.option.correct{border-color:var(--green);background:#eafff5}.option.wrong{border-color:var(--red);background:#fff0f1}
+.feedback{font-weight:800;margin-top:10px}.answer{display:none;color:var(--green);font-weight:800;margin-top:7px}
+.q.revealed .answer{display:block}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:9px}.match button{border:1px solid var(--line);background:white;border-radius:12px;padding:10px;cursor:pointer}.match button.picked{outline:3px solid #cfc5ff;background:#f3f0ff}.match button.done{background:#eafff5;border-color:var(--green)}
+.checks label{display:flex;gap:9px;align-items:flex-start;padding:8px 0;cursor:pointer}.checks input{accent-color:var(--purple);margin-top:4px}
+.fill input{border:0;border-bottom:2px solid var(--purple);padding:5px 8px;width:150px;background:#faf9ff;outline:none}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.btn{border:0;border-radius:14px;padding:12px 17px;font-weight:900;cursor:pointer}.primary{background:var(--purple);color:white}.secondary{background:white;border:1px solid var(--line);color:var(--ink)}
+.result{background:var(--ink);color:white;border-radius:24px;padding:22px;margin-top:18px;display:none}.result.show{display:block}.score{font-size:46px;font-weight:950}
+.progress-wrap{background:#e4e8f0;border-radius:999px;height:10px;overflow:hidden;margin:12px 0 20px}.progress{height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--orange));transition:.3s}
+.tip{background:#fff5dc;border:1px solid #ffe0a1;border-radius:18px;padding:15px;margin-top:14px}
+footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr 1fr}.hero{padding:22px}.card{padding:16px}.section h2{font-size:28px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="hero">
+  <div class="mini">🌎 Geography Quest • 5th Grade</div>
+  <h1>PERU 🇵🇪<br>& MALI 🇲🇱</h1>
+  <p>Explore landscapes, climate, rivers, culture and ways people adapt to their environments — with lots of practice!</p>
+  <div class="stats">
+    <div class="stat"><b>30+</b><span>questions</span></div>
+    <div class="stat"><b>5</b><span>mission areas</span></div>
+    <div class="stat"><b>🏆</b><span>final challenge</span></div>
+  </div>
+</header>
+
+<nav class="nav">
+  <button class="active" data-go="learn">📚 Learn</button>
+  <button data-go="peru">🇵🇪 Peru</button>
+  <button data-go="mali">🇲🇱 Mali</button>
+  <button data-go="compare">⚖️ Compare</button>
+  <button data-go="quiz">🧠 Mega Quiz</button>
+  <button data-go="challenge">🏆 Challenge</button>
+</nav>
+
+<main>
+<section id="learn" class="section active">
+  <div class="section-head"><div class="eyebrow">Mission 01</div><h2>First, understand the map</h2><p>Read the cards, then test what you learned.</p></div>
+  <div class="grid">
+    <article class="card"><span class="tag">🇵🇪 PERU</span><h3>Three important natural regions</h3>
+      <p class="english">Peru has the Pacific coast, the Andes Mountains, and part of the Amazon rainforest.</p><p class="translation">O Peru tem a costa do Pacífico, a Cordilheira dos Andes e parte da floresta Amazônica.</p>
+      <p class="fact">💡 Different landscapes create different climates and ways of living.</p>
+    </article>
+    <article class="card"><span class="tag">🇲🇱 MALI</span><h3>Sahel and Sahara</h3>
+      <p class="english">Mali is a landlocked country in West Africa. The north is much drier and includes the Sahara.</p><p class="translation">Mali é um país sem litoral na África Ocidental. O norte é muito mais seco e inclui o Saara.</p>
+      <p class="fact">💡 The Sahel is a semi-dry transition zone south of the Sahara.</p>
+    </article>
+    <article class="card"><span class="tag">💧 WATER</span><h3>Rivers matter</h3>
+      <p class="english">The Amazon and the Niger are important rivers connected to people, animals, farming and transport.</p><p class="translation">O Amazonas e o Níger são rios importantes ligados às pessoas, aos animais, à agricultura e ao transporte.</p>
+    </article>
+    <article class="card"><span class="tag">🌱 ADAPTATION</span><h3>People adapt</h3>
+      <p class="english">People adapt their homes, clothing, food and activities to the environment around them.</p><p class="translation">As pessoas adaptam suas casas, roupas, alimentos e atividades ao ambiente ao seu redor.</p>
+    </article>
+  </div>
+</section>
+
+<section id="peru" class="section">
+  <div class="section-head"><div class="eyebrow">Mission 02</div><h2>🇵🇪 Peru Explorer</h2><p>Mountains, coast and rainforest.</p></div>
+  <div class="grid">
+    <article class="card"><h3>🗺️ Location</h3><p class="english">Peru is in western South America, next to the Pacific Ocean.</p><p class="translation">O Peru fica no oeste da América do Sul, junto ao Oceano Pacífico.</p></article>
+    <article class="card"><h3>🏔️ Andes</h3><p class="english">The Andes cross Peru and contain very high mountains.</p><p class="translation">Os Andes atravessam o Peru e possuem montanhas muito altas.</p></article>
+    <article class="card"><h3>🌳 Amazon</h3><p class="english">A large part of Peru lies in the Amazon Basin, with tropical forests and many species.</p><p class="translation">Uma grande parte do Peru fica na Bacia Amazônica, com florestas tropicais e muitas espécies.</p></article>
+    <article class="card"><h3>🏙️ Capital</h3><p class="english">Lima is the capital of Peru and is located on the Pacific coast.</p><p class="translation">Lima é a capital do Peru e fica na costa do Pacífico.</p></article>
+  </div>
+  <div class="quiz" id="peruQuiz"></div>
+</section>
+
+<section id="mali" class="section">
+  <div class="section-head"><div class="eyebrow">Mission 03</div><h2>🇲🇱 Mali Explorer</h2><p>Desert, Sahel and the Niger River.</p></div>
+  <div class="grid">
+    <article class="card"><h3>🗺️ Location</h3><p class="english">Mali is a landlocked country in West Africa.</p><p class="translation">Mali é um país sem litoral na África Ocidental.</p></article>
+    <article class="card"><h3>🏜️ Sahara</h3><p class="english">The northern part of Mali is part of the Sahara Desert and is very dry.</p><p class="translation">A parte norte do Mali faz parte do Deserto do Saara e é muito seca.</p></article>
+    <article class="card"><h3>🌾 Sahel</h3><p class="english">The Sahel is a semi-arid region where rainfall is generally greater than in the Sahara.</p><p class="translation">O Sahel é uma região semiárida onde as chuvas geralmente são maiores que no Saara.</p></article>
+    <article class="card"><h3>💧 Niger River</h3><p class="english">The Niger River is important for water, farming, fishing and transport.</p><p class="translation">O Rio Níger é importante para água, agricultura, pesca e transporte.</p></article>
+  </div>
+  <div class="quiz" id="maliQuiz"></div>
+</section>
+
+<section id="compare" class="section">
+  <div class="section-head"><div class="eyebrow">Mission 04</div><h2>⚖️ Peru × Mali</h2><p>Can you spot similarities and differences?</p></div>
+  <div class="grid">
+    <article class="card"><h3>🌎 Continent</h3><p class="english">Peru is in South America. Mali is in Africa.</p><p class="translation">O Peru fica na América do Sul. Mali fica na África.</p></article>
+    <article class="card"><h3>🌊 Coast</h3><p class="english">Peru has a Pacific coastline. Mali has no ocean coastline.</p><p class="translation">O Peru tem litoral no Pacífico. Mali não tem litoral oceânico.</p></article>
+    <article class="card"><h3>⛰️ Landscape</h3><p class="english">Peru is famous for the Andes. Mali is strongly associated with the Sahara and Sahel.</p><p class="translation">O Peru é famoso pelos Andes. Mali está fortemente associado ao Saara e ao Sahel.</p></article>
+    <article class="card"><h3>💧 Rivers</h3><p class="english">Both countries have important rivers that support people and ecosystems.</p><p class="translation">Os dois países têm rios importantes que sustentam pessoas e ecossistemas.</p></article>
+  </div>
+  <div class="quiz" id="compareQuiz"></div>
+</section>
+
+<section id="quiz" class="section">
+  <div class="section-head"><div class="eyebrow">Mission 05</div><h2>🧠 Mega Quiz</h2><p>15 mixed questions. Try to beat your score!</p></div>
+  <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+  <div id="megaQuiz"></div>
+  <div class="actions"><button class="btn primary" onclick="finishQuiz()">🏁 Finish Quiz</button><button class="btn secondary" onclick="resetQuiz()">🔄 Reset</button></div>
+  <div id="result" class="result"></div>
+</section>
+
+<section id="challenge" class="section">
+  <div class="section-head"><div class="eyebrow">Final Mission</div><h2>🏆 World Explorer Challenge</h2><p>Five harder questions. Read carefully!</p></div>
+  <div id="challengeQuiz"></div>
+  <div class="actions"><button class="btn primary" onclick="finishChallenge()">🏆 Check Challenge</button><button class="btn secondary" onclick="resetChallenge()">🔄 Try Again</button></div>
+  <div id="challengeResult" class="result"></div>
+</section>
+</main>
+<footer>Peru & Mali Quest • Material didático interativo • 5º ano</footer>
+</div>
+
+<script>
+const banks={
+peru:[
+["Which ocean borders Peru?","Qual oceano banha o Peru?",["Atlantic Ocean / Oceano Atlântico","Pacific Ocean / Oceano Pacífico","Indian Ocean / Oceano Índico","Arctic Ocean / Oceano Ártico"],1],
+["Which mountain range crosses Peru?","Qual cordilheira atravessa o Peru?",["Andes / Andes","Alps / Alpes","Rockies / Montanhas Rochosas","Himalayas / Himalaia"],0],
+["Which city is the capital of Peru?","Qual cidade é a capital do Peru?",["Cusco","Arequipa","Lima","Iquitos"],2],
+["Which rainforest is found in Peru?","Qual floresta tropical está presente no Peru?",["Amazon rainforest / Floresta Amazônica","Congo rainforest / Floresta do Congo","Taiga","Tundra"],0],
+["Peru is located in which continent?","Em qual continente fica o Peru?",["Africa / África","Asia / Ásia","South America / América do Sul","Europe / Europa"],2],
+["Which statement is true?","Qual afirmação é verdadeira?",["Peru has only deserts.","Peru has coast, mountains and rainforest.","Peru has no mountains.","Peru has no rivers."],1]
+],
+mali:[
+["Mali is in which part of Africa?","Em qual parte da África fica Mali?",["West Africa / África Ocidental","East Africa / África Oriental","Southern Africa / África Austral","North Africa / Norte da África"],0],
+["Is Mali a coastal country?","Mali tem litoral?",["Yes / Sim","No / Não"],1],
+["Which desert covers much of northern Mali?","Qual deserto cobre grande parte do norte do Mali?",["Gobi","Sahara / Saara","Atacama","Kalahari"],1],
+["What is the Sahel?","O que é o Sahel?",["A mountain range / Uma cordilheira","A semi-arid transition region / Uma região de transição semiárida","An ocean / Um oceano","A rainforest / Uma floresta tropical"],1],
+["Which river is especially important in Mali?","Qual rio é especialmente importante no Mali?",["Niger / Níger","Amazon / Amazonas","Nile / Nilo","Mississippi"],0],
+["Why are rivers important?","Por que os rios são importantes?",["Only for decoration / Apenas para decoração","They can provide water, food, farming and transport / Podem fornecer água, alimento, agricultura e transporte","They make deserts disappear / Fazem os desertos desaparecerem","They stop all rain / Impedem toda a chuva"],1]
+],
+compare:[
+["Which country has a Pacific coastline?","Qual país tem litoral no Pacífico?",["Mali","Peru","Both / Ambos","Neither / Nenhum"],1],
+["Which country is landlocked?","Qual país não tem litoral?",["Peru","Mali","Both / Ambos","Neither / Nenhum"],1],
+["Which pair is correct?","Qual par está correto?",["Peru—Andes / Peru—Andes","Mali—Pacific coast / Mali—litoral do Pacífico","Peru—Sahara / Peru—Saara","Mali—Andes / Mali—Andes"],0],
+["Both countries have important...","Os dois países têm importantes...",["rivers / rios","oceans / oceanos","ice caps / calotas de gelo","volcano islands / ilhas vulcânicas"],0],
+["Which comparison is best?","Qual comparação é a melhor?",["Peru and Mali have exactly the same landscape.","Peru has very different regions; Mali has desert and semi-arid regions.","Mali has a Pacific coast.","Peru is in Africa."],1]
+]
+};
+
+const mega=[
+["Which country is in South America?","Qual país fica na América do Sul?",["Mali","Peru","Both / Ambos","Neither / Nenhum"],1],
+["Which country is in West Africa?","Qual país fica na África Ocidental?",["Peru","Mali","Both / Ambos","Neither / Nenhum"],1],
+["The Andes are mainly associated with...","Os Andes estão principalmente associados a...",["Peru","Mali","Both / Ambos","Neither / Nenhum"],0],
+["The Sahara is mainly associated with...","O Saara está principalmente associado a...",["Peru","Mali","Both / Ambos","Neither / Nenhum"],1],
+["Which country has no ocean coastline?","Qual país não tem litoral oceânico?",["Peru","Mali","Both / Ambos","Neither / Nenhum"],1],
+["Which capital is Lima?","Qual capital é Lima?",["Peru","Mali","Both / Ambos","Neither / Nenhum"],0],
+["Which river is important in Mali?","Qual rio é importante no Mali?",["Niger / Níger","Amazon / Amazonas","Thames / Tâmisa","Danube / Danúbio"],0],
+["Which natural region is associated with Peru?","Qual região natural está associada ao Peru?",["Andes / Andes","Sahara / Saara","Sahel only / Apenas Sahel","None / Nenhuma"],0],
+["What does landlocked mean?","O que significa 'landlocked'?",["Surrounded by ocean / Cercado por oceano","Without an ocean coastline / Sem litoral oceânico","Covered by ice / Coberto por gelo","Inside a rainforest / Dentro de uma floresta"],1],
+["Why do people adapt to climate?","Por que as pessoas se adaptam ao clima?",["To live safely and use resources wisely / Para viver com segurança e usar recursos","To change continents / Para mudar continentes","To stop seasons / Para parar as estações","To create oceans / Para criar oceanos"],0],
+["Which is a dry environment?","Qual é um ambiente seco?",["Sahara / Saara","Amazon rainforest / Amazônia","Pacific Ocean / Oceano Pacífico","Wetland only / Apenas área alagada"],0],
+["Which environment is generally wetter?","Qual ambiente geralmente é mais úmido?",["Amazon rainforest / Floresta Amazônica","Sahara / Saara","Northern desert / Deserto do norte","Dry Sahel / Sahel seco"],0],
+["Which statement is correct?","Qual afirmação está correta?",["Mali is in South America.","Peru is in Africa.","Peru is in South America and Mali is in Africa.","Both are in Europe."],2],
+["What can rivers support?","O que os rios podem sustentar?",["Farming / Agricultura","Fishing / Pesca","Transport / Transporte","All of these / Todas as anteriores"],3],
+["What is one reason maps are useful?","Qual é uma razão pela qual mapas são úteis?",["They help us understand location and relationships between places / Ajudam a entender localização e relações entre lugares","They make mountains shorter.","They change climate.","They create rivers."],0]
+];
+
+const challenge=[
+["Imagine a traveler moves from Lima to the Andes. What change is most likely?","Imagine que um viajante vá de Lima para os Andes. Qual mudança é mais provável?",["Elevation becomes much higher / A altitude aumenta bastante","The ocean becomes larger / O oceano fica maior","The Sahara appears / O Saara aparece","Mali becomes nearby / Mali fica próximo"],0],
+["Why can the Niger River be especially valuable in a dry region?","Por que o Rio Níger pode ser especialmente valioso em uma região seca?",["Water is an important resource / A água é um recurso importante","It creates the Pacific Ocean.","It removes all deserts.","It is a mountain."],0],
+["Which conclusion can we make from comparing Peru and Mali?","Qual conclusão podemos tirar ao comparar Peru e Mali?",["Physical geography influences how people live.","All countries have the same climate.","Rivers are never useful.","Mountains only exist in Africa."],0],
+["Which sequence makes the most sense?","Qual sequência faz mais sentido?",["Environment → available resources → human adaptations","Ocean → no geography → no people","Desert → always rain → rainforest","Mountain → always hot → beach"],0],
+["A student says: “Mali has no water because it has desert.” What is the best correction?","Um aluno diz: “Mali não tem água porque tem deserto.” Qual é a melhor correção?",["Mali has rivers and water resources, even though parts of the country are very dry.","Correct: every part is completely dry.","Mali is an island.","Mali has no people."],0]
+];
+
+function makeQuiz(containerId, bank, key){
+ const box=document.getElementById(containerId);
+ box.innerHTML=bank.map((q,i)=>`<div class="q" data-key="${key}" data-index="${i}" data-answer="${q[2]}" >
+ <div class="qnum">Question ${i+1} / Questão ${i+1}</div>
+ <h3><span class="english">${q[0]}</span><br><span class="translation">${q[1]}</span></h3>
+ <div class="options">${q[2].map((o,j)=>`<button class="option" onclick="answer(this,${j},${q[3]})">${o}</button>`).join("")}</div>
+ <div class="feedback"></div><div class="answer">💡 ${q[2][q[3]]}</div>
+ </div>`).join("");
+}
+function answer(btn,chosen,correct){
+ const q=btn.closest(".q"); if(q.classList.contains("revealed")) return;
+ [...q.querySelectorAll(".option")].forEach(x=>x.disabled=true);
+ if(chosen===correct){btn.classList.add("correct");q.classList.add("correct");q.querySelector(".feedback").textContent="✅ Correct! / Correto!"; addScore(1)}
+ else{btn.classList.add("wrong");q.classList.add("wrong");q.querySelector(".feedback").textContent="❌ Not quite. / Ainda não. Veja a resposta abaixo.";q.querySelectorAll(".option")[correct].classList.add("correct")}
+ q.classList.add("revealed");
+ updateProgress();
+}
+let totalAnswered=0, totalCorrect=0;
+function addScore(n){totalCorrect+=n}
+function updateProgress(){const all=document.querySelectorAll("#megaQuiz .q");const done=document.querySelectorAll("#megaQuiz .q.revealed").length;document.getElementById("progress").style.width=(done/all.length*100)+"%"}
+function finishQuiz(){
+ const all=document.querySelectorAll("#megaQuiz .q"); const done=document.querySelectorAll("#megaQuiz .q.revealed").length;
+ if(done<all.length){alert("Responda todas as questões antes de finalizar! / Answer all questions first!");return}
+ let correct=document.querySelectorAll("#megaQuiz .q.correct").length, pct=Math.round(correct/all.length*100);
+ const msg=pct>=90?"🌟 Amazing explorer! / Explorador incrível!":pct>=70?"🚀 Great job! / Muito bem!":pct>=50?"👏 Keep practicing! / Continue praticando!":"💪 Don't give up! / Não desista!";
+ const r=document.getElementById("result");r.classList.add("show");r.innerHTML=`<div class="score">${correct}/${all.length}</div><h3>${msg}</h3><p>${pct}% de aproveitamento. Revise os cards e tente novamente para superar sua pontuação.</p>`;
+}
+function resetQuiz(){document.querySelectorAll("#megaQuiz .q").forEach(q=>{q.className="q";q.querySelectorAll(".option").forEach(b=>{b.disabled=false;b.className="option"});q.querySelector(".feedback").textContent=""});document.getElementById("result").classList.remove("show");document.getElementById("progress").style.width="0"}
+function finishSection(id){
+ const all=document.querySelectorAll("#"+id+" .q"); const done=document.querySelectorAll("#"+id+" .q.revealed").length;
+ if(done<all.length){alert("Responda todas as questões primeiro!");return}
+}
+function makeChallenge(){
+ const box=document.getElementById("challengeQuiz");
+ box.innerHTML=challenge.map((q,i)=>`<div class="q" data-answer="${q[3]}">
+ <div class="qnum">Final ${i+1} / Final ${i+1}</div>
+ <h3><span class="english">${q[0]}</span><br><span class="translation">${q[1]}</span></h3>
+ <div class="options">${q[2].map((o,j)=>`<button class="option" onclick="answer(this,${j},${q[3]})">${o}</button>`).join("")}</div>
+ <div class="feedback"></div><div class="answer">💡 ${q[2][q[3]]}</div></div>`).join("");
+}
+function finishChallenge(){
+ const all=document.querySelectorAll("#challengeQuiz .q"),done=document.querySelectorAll("#challengeQuiz .q.revealed").length;
+ if(done<all.length){alert("Complete as 5 questões! / Complete all 5 questions!");return}
+ const correct=document.querySelectorAll("#challengeQuiz .q.correct").length;
+ const r=document.getElementById("challengeResult");r.classList.add("show");
+ r.innerHTML=`<div class="score">${correct}/5</div><h3>${correct===5?"🏆 PERFECT! / PERFEITO!":"🌎 World Explorer! / Explorador do Mundo!"}</h3><p>Você terminou o desafio final. Muito bom trabalho!</p>`;
+}
+function resetChallenge(){makeChallenge();document.getElementById("challengeResult").classList.remove("show")}
+function init(){
+ makeQuiz("peruQuiz",banks.peru,"peru");makeQuiz("maliQuiz",banks.mali,"mali");makeQuiz("compareQuiz",banks.compare,"compare");makeQuiz("megaQuiz",mega,"mega");makeChallenge();
+ document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));document.getElementById(b.dataset.go).classList.add("active");window.scrollTo({top:0,behavior:"smooth"})});
+}
+init();
+</script>
+</body>
+</html>
