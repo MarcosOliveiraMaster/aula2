@@ -3,252 +3,712 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Peru & Mali Quest — 5º Ano</title>
+<title>História Y5 — U2: Transmissão de saberes, escrita e calendário</title>
 <style>
 :root{
-  --ink:#172033; --muted:#647087; --paper:#fffdf8; --bg:#f3f6fb;
-  --purple:#7657e8; --orange:#ff8b4a; --green:#36b37e; --blue:#4f8df7;
-  --yellow:#ffd166; --red:#ef6670; --line:#e5e9f2;
+  --ink:#16281f; --muted:#5d6f66; --paper:#ffffff; --bg:#f2f7f3;
+  --green:#2f7d55; --green-soft:#dff0e5; --green-deep:#1d5238;
+  --red:#c8352f; --yellow:#ffd166; --sand:#fdf0d5;
+  --orange:#e8862c; --line:#dde6e0; --wrong:#e0574f;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at 10% 0%,#e8e1ff 0 18%,transparent 38%),radial-gradient(circle at 100% 10%,#ffe8d7 0 15%,transparent 36%),var(--bg);color:var(--ink)}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:radial-gradient(circle at 8% 0%,#dff0e5 0 16%,transparent 36%),radial-gradient(circle at 100% 6%,#fde3d6 0 14%,transparent 34%),var(--bg);
+  color:var(--ink);line-height:1.55}
 button{font:inherit}
-.app{max-width:1050px;margin:auto;padding:22px 16px 50px}
-.hero{background:var(--ink);color:#fff;border-radius:30px;padding:28px;position:relative;overflow:hidden;box-shadow:0 20px 50px #18203320}
-.hero:after{content:"";position:absolute;width:230px;height:230px;border-radius:50%;right:-60px;top:-90px;background:var(--orange);opacity:.9}
-.hero .mini{position:relative;z-index:1;color:#cbd3e5;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
-.hero h1{position:relative;z-index:1;font-size:clamp(34px,7vw,62px);line-height:.95;margin:10px 0 12px;max-width:700px}
-.hero p{position:relative;z-index:1;max-width:680px;color:#dce2ef;font-size:17px;margin:0}
+img{max-width:100%;display:block}
+.app{max-width:1060px;margin:auto;padding:22px 16px 60px}
+
+.hero{background:var(--green-deep);color:#fff;border-radius:28px;padding:30px;position:relative;overflow:hidden;box-shadow:0 20px 46px #16281f22}
+.hero:after{content:"🍁";position:absolute;right:-10px;top:-28px;font-size:180px;opacity:.16;line-height:1}
+.hero .mini{position:relative;z-index:1;color:#bcd9c8;font-weight:800;letter-spacing:.09em;text-transform:uppercase;font-size:12px}
+.hero h1{position:relative;z-index:1;font-size:clamp(28px,5.2vw,46px);line-height:1.05;margin:10px 0 12px;max-width:760px}
+.hero p{position:relative;z-index:1;max-width:720px;color:#dcebe1;font-size:17px;margin:0}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px;position:relative;z-index:1}
-.stat{background:#ffffff12;border:1px solid #ffffff1c;border-radius:16px;padding:12px}.stat b{display:block;font-size:22px}.stat span{font-size:12px;color:#bfc8d9}
-.nav{display:flex;gap:8px;overflow:auto;padding:14px 2px;position:sticky;top:0;background:#f3f6fbdd;backdrop-filter:blur(10px);z-index:5}
-.nav button{white-space:nowrap;border:1px solid var(--line);background:white;border-radius:999px;padding:9px 14px;font-weight:800;color:var(--muted);cursor:pointer}
-.nav button.active{background:var(--ink);color:white}
+.stat{background:#ffffff14;border:1px solid #ffffff24;border-radius:16px;padding:12px}
+.stat b{display:block;font-size:22px}.stat span{font-size:12px;color:#c4dbcd}
+
+.nav{display:flex;gap:8px;overflow:auto;padding:14px 2px;position:sticky;top:0;background:#f2f7f3dd;backdrop-filter:blur(10px);z-index:5}
+.nav button{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 14px;font-weight:800;color:var(--muted);cursor:pointer}
+.nav button.active{background:var(--green-deep);color:#fff;border-color:var(--green-deep)}
+
 .section{display:none}.section.active{display:block}
-.section-head{margin:22px 0 14px}.eyebrow{font-size:12px;font-weight:900;text-transform:uppercase;color:var(--purple);letter-spacing:.1em}.section h2{font-size:34px;margin:4px 0}.section-head p{color:var(--muted);margin:0}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 8px 24px #26334b0b}
-.card h3{margin:0 0 8px;font-size:21px}.card p{line-height:1.55;margin:8px 0}.tag{display:inline-block;border-radius:999px;padding:5px 9px;background:#eeeaff;color:#5b42c6;font-size:11px;font-weight:900;margin-bottom:8px}
-.english{font-weight:850}.translation{color:var(--muted);font-size:.92em;margin-top:2px!important}
-.fact{border-left:5px solid var(--orange);padding-left:12px}
-.quiz{margin-top:18px}
-.q{background:white;border:1px solid var(--line);border-radius:20px;padding:18px;margin:12px 0}
-.q.correct{border-color:#9de0c4;background:#f1fff8}.q.wrong{border-color:#f2a2a8;background:#fff5f5}
-.qnum{font-size:11px;font-weight:900;color:var(--purple);text-transform:uppercase}.q h3{margin:6px 0 12px;font-size:18px}
-.options{display:grid;gap:8px}.option{border:1px solid var(--line);background:#fbfcff;text-align:left;border-radius:13px;padding:11px 13px;cursor:pointer}.option:hover{border-color:var(--purple);transform:translateY(-1px)}.option.selected{border-color:var(--purple);background:#f0edff}.option.correct{border-color:var(--green);background:#eafff5}.option.wrong{border-color:var(--red);background:#fff0f1}
-.feedback{font-weight:800;margin-top:10px}.answer{display:none;color:var(--green);font-weight:800;margin-top:7px}
-.q.revealed .answer{display:block}
-.match{display:grid;grid-template-columns:1fr 1fr;gap:9px}.match button{border:1px solid var(--line);background:white;border-radius:12px;padding:10px;cursor:pointer}.match button.picked{outline:3px solid #cfc5ff;background:#f3f0ff}.match button.done{background:#eafff5;border-color:var(--green)}
-.checks label{display:flex;gap:9px;align-items:flex-start;padding:8px 0;cursor:pointer}.checks input{accent-color:var(--purple);margin-top:4px}
-.fill input{border:0;border-bottom:2px solid var(--purple);padding:5px 8px;width:150px;background:#faf9ff;outline:none}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.btn{border:0;border-radius:14px;padding:12px 17px;font-weight:900;cursor:pointer}.primary{background:var(--purple);color:white}.secondary{background:white;border:1px solid var(--line);color:var(--ink)}
-.result{background:var(--ink);color:white;border-radius:24px;padding:22px;margin-top:18px;display:none}.result.show{display:block}.score{font-size:46px;font-weight:950}
-.progress-wrap{background:#e4e8f0;border-radius:999px;height:10px;overflow:hidden;margin:12px 0 20px}.progress{height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--orange));transition:.3s}
-.tip{background:#fff5dc;border:1px solid #ffe0a1;border-radius:18px;padding:15px;margin-top:14px}
-footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr 1fr}.hero{padding:22px}.card{padding:16px}.section h2{font-size:28px}}
+.section-head{margin:22px 0 16px}
+.eyebrow{font-size:12px;font-weight:900;text-transform:uppercase;color:var(--green);letter-spacing:.1em}
+.section h2{font-size:clamp(24px,4vw,34px);margin:4px 0}
+.section-head p{color:var(--muted);margin:0}
+
+.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 8px 22px #16281f0d;margin:14px 0}
+.card h3{margin:0 0 10px;font-size:20px;color:var(--green-deep)}
+.card p{margin:10px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.split{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:start}
+.split.rev{grid-template-columns:.85fr 1.15fr}
+
+figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px}
+figure img{border-radius:12px;width:100%;height:auto}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px}
+figcaption .credit{display:block;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#94a49b;margin-top:4px}
+
+.roteiro{width:100%;border-collapse:collapse;background:#fff;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.roteiro th,.roteiro td{border:1px solid var(--line);padding:14px 16px;text-align:left;vertical-align:top}
+.roteiro th{background:var(--green-soft);color:var(--green-deep);width:34%}
+.roteiro ul{margin:0;padding-left:20px}.roteiro li{margin:4px 0}
+
+.vocab{background:var(--sand);border:1px solid #f2d9a6;border-radius:18px;padding:16px 18px;margin:16px 0}
+.vocab h4{margin:0 0 8px;color:var(--orange);text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+.vocab ul{margin:0;padding-left:18px}.vocab li{margin:6px 0}
+.tip{background:#eaf5ee;border-left:5px solid var(--green);border-radius:12px;padding:12px 14px;margin:14px 0}
+.tag{display:inline-block;border-radius:999px;padding:5px 10px;background:var(--green-soft);color:var(--green-deep);font-size:11px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
+
+.quiz-wrap{margin-top:30px;border-top:2px dashed var(--line);padding-top:22px}
+.quiz-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.quiz-head h3{margin:0;font-size:22px;color:var(--green-deep)}
+.quiz-head .counter{font-weight:900;color:var(--muted);font-size:13px}
+.progress-wrap{background:#e2ece6;border-radius:999px;height:10px;overflow:hidden;margin:14px 0 18px}
+.progress{height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--orange));transition:.3s}
+.q{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;margin:12px 0}
+.q.correct{border-color:#9ad9b6;background:#f2fdf7}
+.q.wrong{border-color:#f0b0ac;background:#fff6f5}
+.qnum{font-size:11px;font-weight:900;color:var(--green);text-transform:uppercase;letter-spacing:.08em}
+.q h4{margin:6px 0 12px;font-size:17px;font-weight:800}
+.options{display:grid;gap:8px}
+.option{border:1px solid var(--line);background:#fbfdfc;text-align:left;border-radius:13px;padding:11px 13px;cursor:pointer;transition:.15s}
+.option:hover{border-color:var(--green);transform:translateY(-1px)}
+.option.correct{border-color:var(--green);background:#e7f8ee;font-weight:700}
+.option.wrong{border-color:var(--wrong);background:#ffeceb}
+.option[disabled]{cursor:default;transform:none;opacity:1;color:var(--ink)}
+.option[disabled]:hover{border-color:var(--line);transform:none}
+.option[disabled]:not(.correct):not(.wrong){background:#f6f8f7;color:#7b8a83}
+.feedback{margin-top:12px;font-size:14px;display:none;border-radius:12px;padding:10px 12px}
+.q.answered .feedback{display:block}
+.q.correct .feedback{background:#e7f8ee;color:#1d5238}
+.q.wrong .feedback{background:#ffeceb;color:#8f2b26}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 0}
+.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:900;cursor:pointer}
+.primary{background:var(--green-deep);color:#fff}
+.secondary{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.result{background:var(--green-deep);color:#fff;border-radius:22px;padding:20px 22px;margin-top:16px;display:none}
+.result.show{display:block}
+.result .score{font-size:40px;font-weight:900;line-height:1}
+.result p{margin:8px 0 0;color:#d6e8dd}
+
+footer{text-align:center;color:var(--muted);font-size:12px;margin-top:34px;line-height:1.7}
+@media(max-width:760px){
+  .grid2,.split,.split.rev{grid-template-columns:1fr}
+  .hero{padding:22px}.card{padding:17px}
+  .roteiro th{width:38%}
+}
 </style>
 </head>
 <body>
 <div class="app">
+
 <header class="hero">
-  <div class="mini">🌎 Geography Quest • 5th Grade</div>
-  <h1>PERU 🇵🇪<br>& MALI 🇲🇱</h1>
-  <p>Explore landscapes, climate, rivers, culture and ways people adapt to their environments — with lots of practice!</p>
+  <div class="mini">🍁 Maple Bear • Year Five • Roteiro de estudos</div>
+  <h1>História — Unidade 2<br>Transmissão de saberes, desenvolvimento da escrita e do calendário</h1>
+  <p>Império Mali, escrita cuneiforme, hieróglifos e as diferentes noções sobre o tempo — com quiz de revisão ao final de cada seção.</p>
   <div class="stats">
-    <div class="stat"><b>30+</b><span>questions</span></div>
-    <div class="stat"><b>5</b><span>mission areas</span></div>
-    <div class="stat"><b>🏆</b><span>final challenge</span></div>
+    <div class="stat"><b>4</b><span>temas de estudo</span></div>
+    <div class="stat"><b>20</b><span>questões de revisão</span></div>
+    <div class="stat"><b>5</b><span>quiz por seção</span></div>
   </div>
 </header>
 
 <nav class="nav">
-  <button class="active" data-go="learn">📚 Learn</button>
-  <button data-go="peru">🇵🇪 Peru</button>
-  <button data-go="mali">🇲🇱 Mali</button>
-  <button data-go="compare">⚖️ Compare</button>
-  <button data-go="quiz">🧠 Mega Quiz</button>
-  <button data-go="challenge">🏆 Challenge</button>
+  <button class="active" data-go="roteiro">📋 Roteiro</button>
+  <button data-go="mali">🌍 Império Mali</button>
+  <button data-go="cuneiforme">🖋️ Escrita cuneiforme</button>
+  <button data-go="hieroglifos">🔺 Hieróglifos</button>
+  <button data-go="tempo">⏳ Noções de tempo</button>
 </nav>
 
 <main>
-<section id="learn" class="section active">
-  <div class="section-head"><div class="eyebrow">Mission 01</div><h2>First, understand the map</h2><p>Read the cards, then test what you learned.</p></div>
-  <div class="grid">
-    <article class="card"><span class="tag">🇵🇪 PERU</span><h3>Three important natural regions</h3>
-      <p class="english">Peru has the Pacific coast, the Andes Mountains, and part of the Amazon rainforest.</p><p class="translation">O Peru tem a costa do Pacífico, a Cordilheira dos Andes e parte da floresta Amazônica.</p>
-      <p class="fact">💡 Different landscapes create different climates and ways of living.</p>
-    </article>
-    <article class="card"><span class="tag">🇲🇱 MALI</span><h3>Sahel and Sahara</h3>
-      <p class="english">Mali is a landlocked country in West Africa. The north is much drier and includes the Sahara.</p><p class="translation">Mali é um país sem litoral na África Ocidental. O norte é muito mais seco e inclui o Saara.</p>
-      <p class="fact">💡 The Sahel is a semi-dry transition zone south of the Sahara.</p>
-    </article>
-    <article class="card"><span class="tag">💧 WATER</span><h3>Rivers matter</h3>
-      <p class="english">The Amazon and the Niger are important rivers connected to people, animals, farming and transport.</p><p class="translation">O Amazonas e o Níger são rios importantes ligados às pessoas, aos animais, à agricultura e ao transporte.</p>
-    </article>
-    <article class="card"><span class="tag">🌱 ADAPTATION</span><h3>People adapt</h3>
-      <p class="english">People adapt their homes, clothing, food and activities to the environment around them.</p><p class="translation">As pessoas adaptam suas casas, roupas, alimentos e atividades ao ambiente ao seu redor.</p>
-    </article>
+
+<!-- ================= ROTEIRO ================= -->
+<section id="roteiro" class="section active">
+  <div class="section-head">
+    <div class="eyebrow">Roteiro de estudos — Y5</div>
+    <h2>Disciplina: História</h2>
+    <p>Conteúdos da U2 — Transmissão de saberes, desenvolvimento da escrita e do calendário.</p>
   </div>
+
+  <table class="roteiro">
+    <tr>
+      <th>O que estudar?</th>
+      <td>
+        <ul>
+          <li>Império Mali;</li>
+          <li>Escrita Cuneiforme e Hieróglifos;</li>
+          <li>Diferentes Noções sobre o tempo.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>Como estudar?</th>
+      <td>
+        <ul>
+          <li>Definir uma rotina diária de estudos para a prova;</li>
+          <li>Realizar leituras dos textos enviados;</li>
+          <li>Fazer resumos;</li>
+          <li>Tirar dúvidas com os professores.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>Onde estudar?</th>
+      <td>
+        <ul>
+          <li>Texto: Império Mali;</li>
+          <li>Texto: Escrita Cuneiforme e Hieróglifos;</li>
+          <li>Texto: As diferentes noções sobre o tempo.</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+
+  <div class="tip">💡 <b>Como usar este material:</b> leia cada seção pelo menu acima e, ao final de cada uma, responda ao <b>quiz de 5 questões</b>. O feedback aparece na hora e você pode refazer quantas vezes quiser.</div>
 </section>
 
-<section id="peru" class="section">
-  <div class="section-head"><div class="eyebrow">Mission 02</div><h2>🇵🇪 Peru Explorer</h2><p>Mountains, coast and rainforest.</p></div>
-  <div class="grid">
-    <article class="card"><h3>🗺️ Location</h3><p class="english">Peru is in western South America, next to the Pacific Ocean.</p><p class="translation">O Peru fica no oeste da América do Sul, junto ao Oceano Pacífico.</p></article>
-    <article class="card"><h3>🏔️ Andes</h3><p class="english">The Andes cross Peru and contain very high mountains.</p><p class="translation">Os Andes atravessam o Peru e possuem montanhas muito altas.</p></article>
-    <article class="card"><h3>🌳 Amazon</h3><p class="english">A large part of Peru lies in the Amazon Basin, with tropical forests and many species.</p><p class="translation">Uma grande parte do Peru fica na Bacia Amazônica, com florestas tropicais e muitas espécies.</p></article>
-    <article class="card"><h3>🏙️ Capital</h3><p class="english">Lima is the capital of Peru and is located on the Pacific coast.</p><p class="translation">Lima é a capital do Peru e fica na costa do Pacífico.</p></article>
-  </div>
-  <div class="quiz" id="peruQuiz"></div>
-</section>
-
+<!-- ================= IMPÉRIO MALI ================= -->
 <section id="mali" class="section">
-  <div class="section-head"><div class="eyebrow">Mission 03</div><h2>🇲🇱 Mali Explorer</h2><p>Desert, Sahel and the Niger River.</p></div>
-  <div class="grid">
-    <article class="card"><h3>🗺️ Location</h3><p class="english">Mali is a landlocked country in West Africa.</p><p class="translation">Mali é um país sem litoral na África Ocidental.</p></article>
-    <article class="card"><h3>🏜️ Sahara</h3><p class="english">The northern part of Mali is part of the Sahara Desert and is very dry.</p><p class="translation">A parte norte do Mali faz parte do Deserto do Saara e é muito seca.</p></article>
-    <article class="card"><h3>🌾 Sahel</h3><p class="english">The Sahel is a semi-arid region where rainfall is generally greater than in the Sahara.</p><p class="translation">O Sahel é uma região semiárida onde as chuvas geralmente são maiores que no Saara.</p></article>
-    <article class="card"><h3>💧 Niger River</h3><p class="english">The Niger River is important for water, farming, fishing and transport.</p><p class="translation">O Rio Níger é importante para água, agricultura, pesca e transporte.</p></article>
+  <div class="section-head">
+    <div class="eyebrow">Tema 01</div>
+    <h2>🌍 Império Mali</h2>
+    <p>África Ocidental Subsaariana — ouro, caravanas e a memória guardada pelos griots.</p>
   </div>
-  <div class="quiz" id="maliQuiz"></div>
-</section>
 
-<section id="compare" class="section">
-  <div class="section-head"><div class="eyebrow">Mission 04</div><h2>⚖️ Peru × Mali</h2><p>Can you spot similarities and differences?</p></div>
-  <div class="grid">
-    <article class="card"><h3>🌎 Continent</h3><p class="english">Peru is in South America. Mali is in Africa.</p><p class="translation">O Peru fica na América do Sul. Mali fica na África.</p></article>
-    <article class="card"><h3>🌊 Coast</h3><p class="english">Peru has a Pacific coastline. Mali has no ocean coastline.</p><p class="translation">O Peru tem litoral no Pacífico. Mali não tem litoral oceânico.</p></article>
-    <article class="card"><h3>⛰️ Landscape</h3><p class="english">Peru is famous for the Andes. Mali is strongly associated with the Sahara and Sahel.</p><p class="translation">O Peru é famoso pelos Andes. Mali está fortemente associado ao Saara e ao Sahel.</p></article>
-    <article class="card"><h3>💧 Rivers</h3><p class="english">Both countries have important rivers that support people and ecosystems.</p><p class="translation">Os dois países têm rios importantes que sustentam pessoas e ecossistemas.</p></article>
+  <div class="card">
+    <span class="tag">África Ocidental Subsaariana</span>
+    <figure>
+      <img src="assets/img/mapa-imperio-mali.jpg" alt="Mapa da África Ocidental Subsaariana com a área do Império Mali destacada em verde">
+      <figcaption>Mapa da África Ocidental Subsaariana, com a extensão do Império Mali destacada.</figcaption>
+    </figure>
+    <p>O <b>Império Mali</b> existiu entre os anos de <b>1235 e 1670</b> na região ocidental da África Subsaariana (ao sul do Deserto do Saara). Antes de se tornar um império, Mali era um <b>reino submetido ao Império de Gana</b>.</p>
+    <p>Foi um dos mais importantes impérios do período, e sua riqueza provinha da <b>exploração de ouro</b>, abundante na região. Esse ouro chegava ao Mediterrâneo e ao Oriente Médio por meio dos <b>povos berberes</b> — povos do norte da África que praticavam o comércio atravessando o Deserto do Saara em caravanas no lombo de camelos.</p>
+    <p>O Império Mali era governado pelo <b>Mansã</b> (imperador), um chefe que, além de ter poder militar e o controle das minas de ouro, era espiritual: ele garantia o elo entre sua comunidade e a ancestralidade.</p>
   </div>
-  <div class="quiz" id="compareQuiz"></div>
+
+  <div class="card">
+    <div class="split rev">
+      <figure>
+        <img src="assets/img/griot.jpg" alt="Gravura antiga de um griot sentado tocando um instrumento de cordas com caixa de cabaça">
+        <figcaption>Griot — o poeta-historiador, guardião da memória do povo.<span class="credit">New York Public Library</span></figcaption>
+      </figure>
+      <div>
+        <h3>Os griots: guardiões da memória</h3>
+        <p>Quem guardava a história da formação dos reinos, da <b>genealogia</b> dos imperadores e de suas conexões com divindades era a figura do <b>poeta-historiador</b>, conhecido como <b>griot</b>.</p>
+        <p>Essa era uma função extremamente importante e carregada de poder, pois eles, além de guardiões da memória, <b>validavam o papel espiritual dos imperadores</b> diante dos súditos.</p>
+        <p>Os griots eram responsáveis por registrar a memória do povo em forma de <b>poesia e música</b>, assim como por realizar <b>apresentações públicas</b> para que elas seguissem vivas. Eram também <b>conselheiros dos reis</b>. Para ser Griot era necessário <b>nascer em família de Griots</b>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="vocab">
+    <h4>Vocabulário</h4>
+    <ul>
+      <li><b>Ancestralidade:</b> relativo ao passado. Linha de gerações anteriores de um indivíduo, uma família ou um povo.</li>
+      <li><b>Genealogia:</b> exposição cronológica da filiação de alguém, cujas investigações possibilitam o conhecimento de sua descendência com base em seus ancestrais.</li>
+    </ul>
+  </div>
+
+  <div class="quiz-wrap" id="quiz-mali"></div>
 </section>
 
-<section id="quiz" class="section">
-  <div class="section-head"><div class="eyebrow">Mission 05</div><h2>🧠 Mega Quiz</h2><p>15 mixed questions. Try to beat your score!</p></div>
-  <div class="progress-wrap"><div class="progress" id="progress"></div></div>
-  <div id="megaQuiz"></div>
-  <div class="actions"><button class="btn primary" onclick="finishQuiz()">🏁 Finish Quiz</button><button class="btn secondary" onclick="resetQuiz()">🔄 Reset</button></div>
-  <div id="result" class="result"></div>
+<!-- ================= CUNEIFORME ================= -->
+<section id="cuneiforme" class="section">
+  <div class="section-head">
+    <div class="eyebrow">Tema 02</div>
+    <h2>🖋️ Escrita cuneiforme</h2>
+    <p>Textos 1 e 2 — a origem da escrita na Mesopotâmia e o trabalho dos escribas.</p>
+  </div>
+
+  <div class="card">
+    <h3>A origem da escrita — Texto 1</h3>
+    <div class="split">
+      <div>
+        <p>As escavações arqueológicas indicam que os primeiros registros de escrita foram encontrados na antiga <b>Mesopotâmia</b>, na região do atual <b>Iraque</b>, há cerca de <b>3 mil anos a.C.</b></p>
+        <p>Chamadas de <b>escrita cuneiforme</b>, os primeiros registros escritos da humanidade eram feitos em pequenos <b>tabletes de argila</b>. Esses tabletes eram riscados com <b>caules de junco</b>. Tanto as argilas quanto o junco eram fartamente encontrados nas regiões próximas aos rios.</p>
+      </div>
+      <figure>
+        <img src="assets/img/tabua-cuneiforme.jpg" alt="Tábua de argila coberta de sinais em escrita cuneiforme">
+        <figcaption>Tábua de argila com escrita cuneiforme suméria da Terceira Dinastia de Ur, 2030 a.C. Coleção Ifergan, em Málaga, Espanha.<span class="credit">Whpics/Dreamstime.com</span></figcaption>
+      </figure>
+    </div>
+
+    <p>O principal intuito com a escrita era o <b>registro de atividades comerciais e produtivas</b> que aconteciam nas cidades antigas.</p>
+
+    <div class="split rev">
+      <figure>
+        <img src="assets/img/junco.jpg" alt="Plantas de junco em uma região pantanosa">
+        <figcaption>Junco em região pantanosa.<span class="credit">Vadim_777/Dreamstime.com</span></figcaption>
+      </figure>
+      <div>
+        <p>Com a formação dos governos, a divisão do trabalho e o comércio do <b>excedente produtivo</b> para outras cidades, os funcionários dos palácios e templos sentiram a necessidade de controlar a quantidade de cereais, cabeças de gado e de carneiros que iam do campo para a cidade e de uma cidade para outra. A contabilização desses recursos era impossível para a memória humana e precisava de um suporte confiável para seu registro. Foi por essa razão que as primeiras inscrições apareceram nos tabletes de argila.</p>
+      </div>
+    </div>
+
+    <p>No início, as inscrições eram tentativas de representar com <b>desenhos</b> os animais ou vegetais que existiam na natureza. Porém, logo essa forma de representação <b>pictórica</b> foi substituída por algo mais prático e eficiente: passaram a desenvolver <b>marcas estilizadas</b> para representar os objetos. O desenvolvimento de sinais para representar as palavras é o que chamamos de <i>escrita</i>. É por isso que a escrita cuneiforme deixou de ser um desenho (pictórica), como as pinturas rupestres, e passou a ser considerada <b>escrita de fato</b>.</p>
+    <p>Por sua finalidade prática e por registros encontrados nos mesmos períodos em diferentes lugares, acredita-se que <b>não tenha sido uma única pessoa a inventar a escrita</b>, mas que as populações, ao se organizarem em cidades, sentiram a necessidade de fazer registros para possibilitar o controle dos recursos alimentares e têxteis. Esses registros evoluíram e se transformaram no decorrer do tempo, por meio do contato entre diferentes povos, até chegar aos alfabetos que conhecemos hoje.</p>
+  </div>
+
+  <div class="vocab">
+    <h4>Vocabulário</h4>
+    <ul>
+      <li><b>Escrita cuneiforme:</b> escrita criada pelos sumérios há mais de 3 mil anos. Inscrições realizadas em argila com o uso de objetos em formato de cunha. É considerada a mais antiga do mundo. Sua principal função era a contábil.</li>
+      <li><b>Excedente produtivo:</b> é quando se produz mais do que a necessidade de consumo, podendo ser destinada uma parte da produção para venda.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Novas finalidades e os escribas — Texto 2</h3>
+    <p>No início, a finalidade de uso da escrita cuneiforme, desenvolvida pelos povos que viviam na região da Mesopotâmia, era estritamente <b>econômica</b>. <b>Gradativamente</b>, os sinais que representavam palavras como "boi", "carneiro", "sol", "água" foram sendo utilizados para compor outras palavras. Por exemplo, o mesmo sinal de sol passou a ser usado também para representar a palavra <i>dia</i>, ampliando assim ainda mais o vocabulário utilizado.</p>
+
+    <div class="split">
+      <div>
+        <p>Tais mudanças possibilitaram que a escrita passasse a cumprir <b>outras finalidades</b>: a escrita literária, de lendas e mitos, foi uma delas, já as outras eram os <b>registros históricos</b> de acontecimentos importantes.</p>
+        <p>No entanto, era necessário que as pessoas se dedicassem a conhecer os sinais que representavam as palavras. Por isso, nas civilizações antigas passou a existir a função de <b>escriba</b>, alguém que dedicaria sua vida ao estudo da escrita e da leitura. Os escribas passavam por um período de formação, que consistia em copiar exaustivamente nomes de reis e deuses, trechos de textos literários e termos técnicos, até dominarem a arte da escrita. Após esse período, tornavam-se parte da <b>elite</b> daquela sociedade, dotados de muito prestígio.</p>
+      </div>
+      <figure>
+        <img src="assets/img/escavacao-argila.jpg" alt="Mão com luva escovando um fragmento de argila em escavação arqueológica">
+        <figcaption>Fragmento de argila, com escrita cuneiforme do período acádio, encontrada em escavação arqueológica.<span class="credit">Couperfield/Dreamstime.com</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="split rev">
+      <figure>
+        <img src="assets/img/placa-babilonica.jpg" alt="Placa de pedra escura com escrita cuneiforme e figuras esculpidas">
+        <figcaption>Placa de pedra com escrita cuneiforme do período babilônico.<span class="credit">Kmiragaya/Dreamstime.com</span></figcaption>
+      </figure>
+      <div>
+        <p>Os reis, em sua maioria, <b>não dominavam a escrita</b>. Dessa forma, começaram a solicitar aos escribas que escrevessem seus nomes e feitos em mármores, pedras e paredes, criando <b>monumentos escritos</b> para lembranças de seus reinados. A aprendizagem da escrita não estava ao alcance de todos, o que ocorre até hoje.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="vocab">
+    <h4>Vocabulário</h4>
+    <ul>
+      <li><b>Escriba:</b> nas civilizações antigas, referia-se àqueles que dominavam a escrita e eram responsáveis por registros literários, históricos e leis.</li>
+      <li><b>Gradativamente:</b> lentamente, passo a passo.</li>
+    </ul>
+  </div>
+
+  <div class="quiz-wrap" id="quiz-cuneiforme"></div>
 </section>
 
-<section id="challenge" class="section">
-  <div class="section-head"><div class="eyebrow">Final Mission</div><h2>🏆 World Explorer Challenge</h2><p>Five harder questions. Read carefully!</p></div>
-  <div id="challengeQuiz"></div>
-  <div class="actions"><button class="btn primary" onclick="finishChallenge()">🏆 Check Challenge</button><button class="btn secondary" onclick="resetChallenge()">🔄 Try Again</button></div>
-  <div id="challengeResult" class="result"></div>
+<!-- ================= HIERÓGLIFOS ================= -->
+<section id="hieroglifos" class="section">
+  <div class="section-head">
+    <div class="eyebrow">Tema 03</div>
+    <h2>🔺 Hieróglifos — Texto 3</h2>
+    <p>A escrita sagrada do Egito antigo, esculpida em monumentos de pedra.</p>
+  </div>
+
+  <div class="card">
+    <div class="split">
+      <div>
+        <p>Os <b>hieróglifos</b> são a forma mais antiga da <b>escrita egípcia</b>. Os primeiros registros encontrados estavam em pedras e objetos de cerâmica, datados de <b>3.000 a.C.</b> Também foi possível encontrar registros hieróglifos datados de <b>100 d.C.</b>, o que significa que essa escrita <b>durou mais de 3 mil anos</b>.</p>
+        <p>Apesar das diferentes finalidades, com o tempo a escrita hieroglífica foi utilizada predominantemente no contexto <b>religioso e monumental</b>, por isso é possível encontrá-la esculpida em grandes monumentos de pedra.</p>
+      </div>
+      <figure>
+        <img src="assets/img/hieroglifos-parede.jpg" alt="Parede de pedra egípcia coberta por hieróglifos esculpidos">
+        <figcaption>Hieróglifos esculpidos em parede de monumento egípcio.<span class="credit">Brian Weed/Dreamstime.com</span></figcaption>
+      </figure>
+    </div>
+
+    <p>Os hieróglifos mais antigos são, sobretudo, <b>pictóricos</b>, ou seja, animais e objetos são representados de acordo com suas formas naturais, como em um desenho.</p>
+
+    <div class="split rev">
+      <figure>
+        <img src="assets/img/olho-de-horus.jpg" alt="Relevo em pedra alaranjada mostrando o hieróglifo do olho de Hórus">
+        <figcaption>Hieróglifo que representa o deus Hórus, também usado como amuleto de proteção.<span class="credit">Ismael Khalifa/Dreamstime.com</span></figcaption>
+      </figure>
+      <div>
+        <p>O nome "hieróglifo" significa <b>"letras sagradas"</b>, isso explica que para os egípcios não era apenas um sistema de escrita, mas também <b>palavras divinas que detinham poderes mágicos</b>. E ainda, explica o porquê de alguns hieróglifos, como o que representava o <b>deus Hórus</b>, terem sido utilizados como <b>amuletos de proteção</b>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="vocab">
+    <h4>Vocabulário</h4>
+    <ul>
+      <li><b>Pictórico:</b> relativo à imagem, que pode ser representado visualmente por meio de desenho.</li>
+    </ul>
+  </div>
+
+  <div class="quiz-wrap" id="quiz-hieroglifos"></div>
 </section>
+
+<!-- ================= TEMPO ================= -->
+<section id="tempo" class="section">
+  <div class="section-head">
+    <div class="eyebrow">Tema 04</div>
+    <h2>⏳ Diferentes noções sobre o tempo</h2>
+    <p>O tempo dos astros, o tempo das tarefas e o tempo do relógio.</p>
+  </div>
+
+  <div class="card">
+    <h3>O tempo dos astros</h3>
+    <p>A passagem do tempo é uma preocupação desde o <b>Período Paleolítico</b>, em que os seres humanos notavam que o <b>SOL</b> se deslocava durante o dia e, com ele, as sombras. Ao final do dia, surgia a <b>LUA</b>, que iluminava a escuridão com suas diferentes fases.</p>
+    <figure>
+      <img src="assets/img/sol-dia.jpg" alt="Três quadros mostrando o sol em posições diferentes sobre uma árvore ao longo do dia">
+      <figcaption>Ilustração representando o deslocamento do Sol no decorrer do dia.<span class="credit">Artshotphoto/Dreamstime.com</span></figcaption>
+    </figure>
+    <p>Para nossos ancestrais, o tempo era <b>cíclico</b> e se repetia constantemente. Essa compreensão possibilitava conhecer o comportamento dos animais e das plantas, garantindo caças e coletas mais bem sucedidas.</p>
+    <p>Monumentos do <b>Período Neolítico</b>, como <b>Stonehenge</b>, dão indícios de que, além do dia e da noite, nossos ancestrais eram capazes de perceber as diferentes posições do sol no decorrer do ano.</p>
+    <p>A compreensão sobre as <b>estações do ano</b> foi muito importante para a organização da agricultura: a percepção dos tempos de semear e dos tempos de colher. Vestígios arqueológicos, encontrados nas paredes das cavernas ou gravados em ossos, sugerem que os primeiros calendários eram baseados nas <b>fases da lua</b>. O <b>Osso de Ishango</b>, encontrado em um sítio arqueológico no <b>Congo</b>, seria um dos vestígios mais antigos do calendário lunar, que dividia o ano em <b>6 meses</b>.</p>
+    <p>Na <b>Mesopotâmia</b> e no <b>Egito antigo</b>, a percepção sobre o tempo se desenvolveu ainda mais, com a construção de <b>obeliscos</b> e, em seguida, de <b>relógios do sol</b>. Esses povos puderam ter mais precisão sobre a passagem do tempo. Foram os povos <b>babilônicos</b>, na Mesopotâmia, que dividiram o ano em <b>12 meses</b> e o mês em <b>30 dias</b>. Divisão que utilizamos até os dias de hoje.</p>
+  </div>
+
+  <div class="card">
+    <h3>O tempo das tarefas</h3>
+    <div class="split">
+      <div>
+        <p>Antes dos relógios, a noção de tempo estava relacionada ao <b>ciclo de tarefas familiares</b> no campo e ao trabalho doméstico. Algumas sociedades, por exemplo, utilizavam o tempo de cozimento de um alimento como referência para determinar a duração de uma tarefa, utilizando expressões como <i>"isso será tão rápido quanto assar o milho"</i>.</p>
+        <p>Não é a hora exata, mas <b>ritmos da natureza</b>, como o cantar de um galo que anuncia o início do dia no campo, que eram e continuam sendo relevantes para a vida no campo. A vida rural é uma sucessão de tarefas cíclicas de cuidado com os animais e com as plantações que não exige precisão de tempo. É a lógica da <b>necessidade do que é preciso ser feito</b> que impera, e não a dos minutos.</p>
+      </div>
+      <figure>
+        <img src="assets/img/tempo-tarefas.jpg" alt="Ilustração de duas pessoas cuidando de uma horta, uma regando e outra plantando">
+        <figcaption>O tempo marcado pelo ciclo das tarefas do campo.<span class="credit">Dorofeieva/Dreamstime.com</span></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>O tempo do relógio</h3>
+    <p>Com a <b>Revolução Industrial</b> (no século XIX) e o surgimento das fábricas, as pessoas deixaram de trabalhar em suas próprias oficinas e plantações e passaram a <b>vender sua mão de obra</b> para o dono da fábrica.</p>
+    <p>Isso transformou completamente a noção de tempo das sociedades, uma vez que o tempo passou a ser <b>medido em dinheiro</b>. O tempo de trabalho de cada operário é calculado com a precisão das <b>horas e dos minutos</b>.</p>
+    <p>Outra mudança imposta em consequência do trabalho nas fábricas foi a necessidade de que as tarefas fossem realizadas de maneira <b>síncrona</b>, ou seja, todos ao mesmo tempo, exigindo grande precisão. A <b>pontualidade</b> passou a ser um valor imprescindível para a vida nas cidades, e tal noção é construída desde a infância, com a própria organização do tempo escolar exigindo disciplina.</p>
+    <figure>
+      <img src="assets/img/cidade-industrial.jpg" alt="Ilustração de uma cidade industrial com fábricas, chaminés soltando fumaça e trilhos de trem">
+      <figcaption>Cidade industrial: fábricas, chaminés e ferrovias mudaram o ritmo da vida.<span class="credit">Patrimonio Designs Limited/Dreamstime.com</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="vocab">
+    <h4>Vocabulário</h4>
+    <ul>
+      <li><b>Período Paleolítico:</b> refere-se ao mais longo período da Pré-História, com início há cerca de 2,5 milhões de anos. Seu principal marco foi a produção de ferramentas feitas com pedra, que, quando chocadas umas contra as outras, formavam lascas pontiagudas e cortantes. Por isso, é também conhecido como <b>Idade da Pedra Lascada</b>.</li>
+      <li><b>Período Neolítico:</b> período que faz parte da Pré-História. Iniciou há cerca de 10 mil anos e significa <b>pedra polida</b>, isso porque os vestígios desse período indicam que os seres humanos aprimoraram e desenvolveram mais suas técnicas de produção de ferramentas, modelando-as com mais sofisticação.</li>
+    </ul>
+  </div>
+
+  <div class="quiz-wrap" id="quiz-tempo"></div>
+</section>
+
 </main>
-<footer>Peru & Mali Quest • Material didático interativo • 5º ano</footer>
+
+<footer>
+  Roteiro de estudos — Year Five • História • Unidade 2 — Aula 12 / Material 2<br>
+  Conteúdo e imagens: material didático Maple Bear — Maple Canada Education Ltda. Todos os direitos reservados.
+</footer>
 </div>
 
 <script>
-const banks={
-peru:[
-["Which ocean borders Peru?","Qual oceano banha o Peru?",["Atlantic Ocean / Oceano Atlântico","Pacific Ocean / Oceano Pacífico","Indian Ocean / Oceano Índico","Arctic Ocean / Oceano Ártico"],1],
-["Which mountain range crosses Peru?","Qual cordilheira atravessa o Peru?",["Andes / Andes","Alps / Alpes","Rockies / Montanhas Rochosas","Himalayas / Himalaia"],0],
-["Which city is the capital of Peru?","Qual cidade é a capital do Peru?",["Cusco","Arequipa","Lima","Iquitos"],2],
-["Which rainforest is found in Peru?","Qual floresta tropical está presente no Peru?",["Amazon rainforest / Floresta Amazônica","Congo rainforest / Floresta do Congo","Taiga","Tundra"],0],
-["Peru is located in which continent?","Em qual continente fica o Peru?",["Africa / África","Asia / Ásia","South America / América do Sul","Europe / Europa"],2],
-["Which statement is true?","Qual afirmação é verdadeira?",["Peru has only deserts.","Peru has coast, mountains and rainforest.","Peru has no mountains.","Peru has no rivers."],1]
-],
-mali:[
-["Mali is in which part of Africa?","Em qual parte da África fica Mali?",["West Africa / África Ocidental","East Africa / África Oriental","Southern Africa / África Austral","North Africa / Norte da África"],0],
-["Is Mali a coastal country?","Mali tem litoral?",["Yes / Sim","No / Não"],1],
-["Which desert covers much of northern Mali?","Qual deserto cobre grande parte do norte do Mali?",["Gobi","Sahara / Saara","Atacama","Kalahari"],1],
-["What is the Sahel?","O que é o Sahel?",["A mountain range / Uma cordilheira","A semi-arid transition region / Uma região de transição semiárida","An ocean / Um oceano","A rainforest / Uma floresta tropical"],1],
-["Which river is especially important in Mali?","Qual rio é especialmente importante no Mali?",["Niger / Níger","Amazon / Amazonas","Nile / Nilo","Mississippi"],0],
-["Why are rivers important?","Por que os rios são importantes?",["Only for decoration / Apenas para decoração","They can provide water, food, farming and transport / Podem fornecer água, alimento, agricultura e transporte","They make deserts disappear / Fazem os desertos desaparecerem","They stop all rain / Impedem toda a chuva"],1]
-],
-compare:[
-["Which country has a Pacific coastline?","Qual país tem litoral no Pacífico?",["Mali","Peru","Both / Ambos","Neither / Nenhum"],1],
-["Which country is landlocked?","Qual país não tem litoral?",["Peru","Mali","Both / Ambos","Neither / Nenhum"],1],
-["Which pair is correct?","Qual par está correto?",["Peru—Andes / Peru—Andes","Mali—Pacific coast / Mali—litoral do Pacífico","Peru—Sahara / Peru—Saara","Mali—Andes / Mali—Andes"],0],
-["Both countries have important...","Os dois países têm importantes...",["rivers / rios","oceans / oceanos","ice caps / calotas de gelo","volcano islands / ilhas vulcânicas"],0],
-["Which comparison is best?","Qual comparação é a melhor?",["Peru and Mali have exactly the same landscape.","Peru has very different regions; Mali has desert and semi-arid regions.","Mali has a Pacific coast.","Peru is in Africa."],1]
-]
+/* ---------- Navegação entre seções ---------- */
+document.querySelectorAll('.nav button').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.nav button').forEach(function(x){x.classList.remove('active')});
+    document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active')});
+    b.classList.add('active');
+    document.getElementById(b.dataset.go).classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+});
+
+/* ---------- Banco de questões (5 por seção) ---------- */
+var QUIZZES = {
+  mali: {
+    title: 'Quiz — Império Mali',
+    intro: 'Cinco questões para revisar o Império Mali e os griots.',
+    questions: [
+      {
+        q: 'Entre quais anos existiu o Império Mali?',
+        options: ['Entre 1235 e 1670', 'Entre 100 a.C. e 300 d.C.', 'Entre 3.000 a.C. e 100 d.C.', 'Entre 1800 e 1900'],
+        answer: 0,
+        why: 'O Império Mali existiu entre os anos de 1235 e 1670, na região ocidental da África Subsaariana (ao sul do Deserto do Saara).'
+      },
+      {
+        q: 'Antes de se tornar um império, Mali era:',
+        options: ['Uma colônia dos berberes', 'Um reino submetido ao Império de Gana', 'Uma cidade da Mesopotâmia', 'Uma província do Egito antigo'],
+        answer: 1,
+        why: 'Antes de se tornar um império, Mali era um reino submetido ao Império de Gana.'
+      },
+      {
+        q: 'De onde provinha a riqueza do Império Mali?',
+        options: ['Da pesca no Oceano Atlântico', 'Da criação de camelos', 'Da exploração de ouro, abundante na região', 'Da produção de tecidos de seda'],
+        answer: 2,
+        why: 'A riqueza do Mali vinha da exploração do ouro, abundante na região. Esse ouro chegava ao Mediterrâneo e ao Oriente Médio por meio dos povos berberes, que atravessavam o Saara em caravanas de camelos.'
+      },
+      {
+        q: 'Quem era o Mansã e qual era o seu papel?',
+        options: [
+          'Um comerciante berbere que vendia ouro no Mediterrâneo',
+          'O imperador: tinha poder militar, controlava as minas de ouro e era um chefe espiritual',
+          'O escriba responsável por escrever as leis do império',
+          'O sacerdote encarregado apenas dos rituais de colheita'
+        ],
+        answer: 1,
+        why: 'O Mansã era o imperador. Além do poder militar e do controle das minas de ouro, era um chefe espiritual: garantia o elo entre sua comunidade e a ancestralidade.'
+      },
+      {
+        q: 'Qual era a função do griot na sociedade do Império Mali?',
+        options: [
+          'Comandar o exército durante as travessias do Saara',
+          'Cobrar impostos sobre o comércio do ouro',
+          'Ser o poeta-historiador que guardava a memória e a genealogia em poesia e música',
+          'Ensinar a escrita cuneiforme aos filhos do imperador'
+        ],
+        answer: 2,
+        why: 'O griot era o poeta-historiador: guardava a história dos reinos e a genealogia dos imperadores em forma de poesia e música, fazia apresentações públicas, validava o papel espiritual do imperador e era conselheiro dos reis. Para ser griot era necessário nascer em família de griots.'
+      }
+    ]
+  },
+
+  cuneiforme: {
+    title: 'Quiz — Escrita cuneiforme',
+    intro: 'Cinco questões para revisar a origem da escrita e o trabalho dos escribas.',
+    questions: [
+      {
+        q: 'Onde e quando foram encontrados os primeiros registros de escrita?',
+        options: [
+          'No Egito antigo, há cerca de 100 d.C.',
+          'Na antiga Mesopotâmia, região do atual Iraque, há cerca de 3 mil anos a.C.',
+          'No Império Mali, por volta de 1235',
+          'Na Europa, durante a Revolução Industrial'
+        ],
+        answer: 1,
+        why: 'As escavações arqueológicas indicam que os primeiros registros de escrita foram encontrados na antiga Mesopotâmia, na região do atual Iraque, há cerca de 3 mil anos a.C.'
+      },
+      {
+        q: 'Em que material e com que instrumento eram feitos os primeiros registros escritos?',
+        options: [
+          'Em papiro, com pena e tinta',
+          'Em blocos de mármore, com cinzel de metal',
+          'Em pequenos tabletes de argila, riscados com caules de junco',
+          'Em peles de animais, com carvão'
+        ],
+        answer: 2,
+        why: 'Os primeiros registros eram feitos em pequenos tabletes de argila, riscados com caules de junco. Tanto a argila quanto o junco eram fartamente encontrados nas regiões próximas aos rios.'
+      },
+      {
+        q: 'Qual era o principal intuito da escrita quando ela surgiu?',
+        options: [
+          'Registrar lendas e mitos religiosos',
+          'Registrar as atividades comerciais e produtivas das cidades antigas',
+          'Enviar cartas entre famílias distantes',
+          'Decorar as paredes dos templos'
+        ],
+        answer: 1,
+        why: 'A finalidade inicial era estritamente econômica: registrar as atividades comerciais e produtivas — cereais, cabeças de gado e carneiros que circulavam entre o campo e as cidades. Só gradativamente a escrita passou a cumprir finalidades literárias e históricas.'
+      },
+      {
+        q: 'Por que a escrita cuneiforme é considerada "escrita de fato", e não apenas desenho?',
+        options: [
+          'Porque foi inventada por uma única pessoa muito importante',
+          'Porque era feita apenas por reis e sacerdotes',
+          'Porque era sempre esculpida em pedra, e não em argila',
+          'Porque deixou de ser pictórica e passou a usar sinais estilizados para representar as palavras'
+        ],
+        answer: 3,
+        why: 'No início as inscrições eram desenhos de animais e vegetais (representação pictórica). Depois passaram a ser marcas estilizadas que representam palavras — e o desenvolvimento de sinais para representar palavras é o que chamamos de escrita.'
+      },
+      {
+        q: 'Quem era o escriba nas civilizações antigas?',
+        options: [
+          'O rei que escrevia pessoalmente seus feitos nos monumentos',
+          'Alguém que dedicava sua vida ao estudo da escrita e da leitura, tornando-se parte da elite',
+          'O comerciante que vendia tabletes de argila',
+          'O artesão que fabricava os caules de junco'
+        ],
+        answer: 1,
+        why: 'O escriba dedicava sua vida ao estudo da escrita e da leitura. Sua formação consistia em copiar exaustivamente nomes de reis e deuses, textos literários e termos técnicos; depois tornava-se parte da elite, com muito prestígio — inclusive porque a maioria dos reis não dominava a escrita.'
+      }
+    ]
+  },
+
+  hieroglifos: {
+    title: 'Quiz — Hieróglifos',
+    intro: 'Cinco questões para revisar a escrita sagrada do Egito antigo.',
+    questions: [
+      {
+        q: 'Os hieróglifos são a forma mais antiga da escrita de qual povo?',
+        options: ['Dos sumérios', 'Dos babilônicos', 'Dos egípcios', 'Dos berberes'],
+        answer: 2,
+        why: 'Os hieróglifos são a forma mais antiga da escrita egípcia. A escrita cuneiforme, por sua vez, foi criada pelos sumérios, na Mesopotâmia.'
+      },
+      {
+        q: 'Os registros hieróglifos vão de 3.000 a.C. até cerca de 100 d.C. O que isso significa?',
+        options: [
+          'Que essa escrita durou mais de 3 mil anos',
+          'Que essa escrita durou apenas 100 anos',
+          'Que ela foi usada somente depois da escrita cuneiforme desaparecer',
+          'Que ela nunca chegou a ser usada de verdade'
+        ],
+        answer: 0,
+        why: 'Os primeiros registros datam de 3.000 a.C. e há registros de até 100 d.C., o que significa que a escrita hieroglífica durou mais de 3 mil anos.'
+      },
+      {
+        q: 'Com o tempo, a escrita hieroglífica foi utilizada predominantemente em qual contexto?',
+        options: [
+          'No contexto contábil, para contar sacas de cereais',
+          'No contexto religioso e monumental',
+          'No comércio entre cidades do Saara',
+          'Na organização do horário das fábricas'
+        ],
+        answer: 1,
+        why: 'Apesar das diferentes finalidades, a escrita hieroglífica foi usada predominantemente no contexto religioso e monumental — por isso é encontrada esculpida em grandes monumentos de pedra.'
+      },
+      {
+        q: 'O que significa a palavra "hieróglifo"?',
+        options: ['"Marcas de cunha"', '"Pedra polida"', '"Escrita do rio"', '"Letras sagradas"'],
+        answer: 3,
+        why: '"Hieróglifo" significa "letras sagradas". Para os egípcios não era apenas um sistema de escrita: eram palavras divinas que detinham poderes mágicos — por isso hieróglifos como o do deus Hórus foram usados como amuletos de proteção.'
+      },
+      {
+        q: 'Dizer que os hieróglifos mais antigos são "pictóricos" significa que:',
+        options: [
+          'Eles eram pintados apenas com a cor dourada',
+          'Animais e objetos eram representados de acordo com suas formas naturais, como em um desenho',
+          'Eles só podiam ser lidos pelos faraós',
+          'Eles eram escritos em tabletes de argila mole'
+        ],
+        answer: 1,
+        why: 'Pictórico é o que é relativo à imagem, representado visualmente por meio de desenho: nos hieróglifos mais antigos, animais e objetos aparecem conforme suas formas naturais.'
+      }
+    ]
+  },
+
+  tempo: {
+    title: 'Quiz — Diferentes noções sobre o tempo',
+    intro: 'Cinco questões para revisar o tempo dos astros, das tarefas e do relógio.',
+    questions: [
+      {
+        q: 'Desde qual período a passagem do tempo já era uma preocupação dos seres humanos?',
+        options: ['Desde o Período Paleolítico', 'Desde a Revolução Industrial', 'Desde o Império Mali', 'Desde a invenção do relógio mecânico'],
+        answer: 0,
+        why: 'A passagem do tempo é uma preocupação desde o Período Paleolítico, quando os seres humanos notavam o deslocamento do Sol durante o dia e as fases da Lua à noite.'
+      },
+      {
+        q: 'O que é o Osso de Ishango e por que ele é importante?',
+        options: [
+          'Uma ferramenta de caça do Período Neolítico encontrada em Stonehenge',
+          'Um monumento de pedra que marcava as estações do ano',
+          'Um vestígio encontrado no Congo, um dos mais antigos calendários lunares, que dividia o ano em 6 meses',
+          'Um tablete de argila com a primeira escrita cuneiforme'
+        ],
+        answer: 2,
+        why: 'O Osso de Ishango, encontrado em um sítio arqueológico no Congo, seria um dos vestígios mais antigos do calendário lunar, que dividia o ano em 6 meses.'
+      },
+      {
+        q: 'Quem dividiu o ano em 12 meses e o mês em 30 dias, divisão que usamos até hoje?',
+        options: ['Os egípcios', 'Os povos babilônicos, na Mesopotâmia', 'Os griots do Império Mali', 'Os construtores de Stonehenge'],
+        answer: 1,
+        why: 'Foram os povos babilônicos, na Mesopotâmia, que dividiram o ano em 12 meses e o mês em 30 dias — divisão que utilizamos até os dias de hoje. Na Mesopotâmia e no Egito antigo também surgiram obeliscos e relógios de sol.'
+      },
+      {
+        q: 'A expressão "isso será tão rápido quanto assar o milho" é um exemplo de qual noção de tempo?',
+        options: [
+          'O tempo do relógio, medido em horas e minutos',
+          'O tempo dos astros, medido pelas fases da lua',
+          'O tempo das tarefas, ligado aos ciclos do campo e do trabalho doméstico',
+          'O tempo escolar, organizado por aulas'
+        ],
+        answer: 2,
+        why: 'É o tempo das tarefas: antes dos relógios, a noção de tempo estava ligada ao ciclo de tarefas familiares no campo e ao trabalho doméstico, guiada pelos ritmos da natureza — não pela hora exata.'
+      },
+      {
+        q: 'O que mudou na noção de tempo com a Revolução Industrial, no século XIX?',
+        options: [
+          'O tempo passou a ser medido em dinheiro, com precisão de horas e minutos, exigindo trabalho síncrono e pontualidade',
+          'As pessoas passaram a usar o calendário lunar de 6 meses',
+          'O tempo voltou a ser medido pelo canto do galo e pelo cozimento dos alimentos',
+          'As fábricas deixaram de precisar de horários fixos'
+        ],
+        answer: 0,
+        why: 'Com as fábricas, as pessoas passaram a vender sua mão de obra, e o tempo de trabalho passou a ser medido em dinheiro, com precisão de horas e minutos. As tarefas precisavam ser síncronas, e a pontualidade virou um valor imprescindível — construído desde a infância, na organização do tempo escolar.'
+      }
+    ]
+  }
 };
 
-const mega=[
-["Which country is in South America?","Qual país fica na América do Sul?",["Mali","Peru","Both / Ambos","Neither / Nenhum"],1],
-["Which country is in West Africa?","Qual país fica na África Ocidental?",["Peru","Mali","Both / Ambos","Neither / Nenhum"],1],
-["The Andes are mainly associated with...","Os Andes estão principalmente associados a...",["Peru","Mali","Both / Ambos","Neither / Nenhum"],0],
-["The Sahara is mainly associated with...","O Saara está principalmente associado a...",["Peru","Mali","Both / Ambos","Neither / Nenhum"],1],
-["Which country has no ocean coastline?","Qual país não tem litoral oceânico?",["Peru","Mali","Both / Ambos","Neither / Nenhum"],1],
-["Which capital is Lima?","Qual capital é Lima?",["Peru","Mali","Both / Ambos","Neither / Nenhum"],0],
-["Which river is important in Mali?","Qual rio é importante no Mali?",["Niger / Níger","Amazon / Amazonas","Thames / Tâmisa","Danube / Danúbio"],0],
-["Which natural region is associated with Peru?","Qual região natural está associada ao Peru?",["Andes / Andes","Sahara / Saara","Sahel only / Apenas Sahel","None / Nenhuma"],0],
-["What does landlocked mean?","O que significa 'landlocked'?",["Surrounded by ocean / Cercado por oceano","Without an ocean coastline / Sem litoral oceânico","Covered by ice / Coberto por gelo","Inside a rainforest / Dentro de uma floresta"],1],
-["Why do people adapt to climate?","Por que as pessoas se adaptam ao clima?",["To live safely and use resources wisely / Para viver com segurança e usar recursos","To change continents / Para mudar continentes","To stop seasons / Para parar as estações","To create oceans / Para criar oceanos"],0],
-["Which is a dry environment?","Qual é um ambiente seco?",["Sahara / Saara","Amazon rainforest / Amazônia","Pacific Ocean / Oceano Pacífico","Wetland only / Apenas área alagada"],0],
-["Which environment is generally wetter?","Qual ambiente geralmente é mais úmido?",["Amazon rainforest / Floresta Amazônica","Sahara / Saara","Northern desert / Deserto do norte","Dry Sahel / Sahel seco"],0],
-["Which statement is correct?","Qual afirmação está correta?",["Mali is in South America.","Peru is in Africa.","Peru is in South America and Mali is in Africa.","Both are in Europe."],2],
-["What can rivers support?","O que os rios podem sustentar?",["Farming / Agricultura","Fishing / Pesca","Transport / Transporte","All of these / Todas as anteriores"],3],
-["What is one reason maps are useful?","Qual é uma razão pela qual mapas são úteis?",["They help us understand location and relationships between places / Ajudam a entender localização e relações entre lugares","They make mountains shorter.","They change climate.","They create rivers."],0]
-];
+/* ---------- Renderização dos quizzes ---------- */
+function buildQuiz(key){
+  var data = QUIZZES[key];
+  var wrap = document.getElementById('quiz-' + key);
+  if(!wrap) return;
+  var total = data.questions.length;
+  var state = {answered:0, correct:0};
 
-const challenge=[
-["Imagine a traveler moves from Lima to the Andes. What change is most likely?","Imagine que um viajante vá de Lima para os Andes. Qual mudança é mais provável?",["Elevation becomes much higher / A altitude aumenta bastante","The ocean becomes larger / O oceano fica maior","The Sahara appears / O Saara aparece","Mali becomes nearby / Mali fica próximo"],0],
-["Why can the Niger River be especially valuable in a dry region?","Por que o Rio Níger pode ser especialmente valioso em uma região seca?",["Water is an important resource / A água é um recurso importante","It creates the Pacific Ocean.","It removes all deserts.","It is a mountain."],0],
-["Which conclusion can we make from comparing Peru and Mali?","Qual conclusão podemos tirar ao comparar Peru e Mali?",["Physical geography influences how people live.","All countries have the same climate.","Rivers are never useful.","Mountains only exist in Africa."],0],
-["Which sequence makes the most sense?","Qual sequência faz mais sentido?",["Environment → available resources → human adaptations","Ocean → no geography → no people","Desert → always rain → rainforest","Mountain → always hot → beach"],0],
-["A student says: “Mali has no water because it has desert.” What is the best correction?","Um aluno diz: “Mali não tem água porque tem deserto.” Qual é a melhor correção?",["Mali has rivers and water resources, even though parts of the country are very dry.","Correct: every part is completely dry.","Mali is an island.","Mali has no people."],0]
-];
+  var html = ''
+    + '<div class="quiz-head"><h3>🧠 ' + data.title + '</h3>'
+    + '<span class="counter" id="counter-' + key + '">0 / ' + total + ' respondidas</span></div>'
+    + '<p style="color:var(--muted);margin:6px 0 0">' + data.intro + '</p>'
+    + '<div class="progress-wrap"><div class="progress" id="progress-' + key + '"></div></div>'
+    + '<div id="qs-' + key + '"></div>'
+    + '<div class="actions"><button class="btn secondary" id="reset-' + key + '">🔄 Refazer o quiz</button></div>'
+    + '<div class="result" id="result-' + key + '"><div class="score" id="score-' + key + '"></div><p id="msg-' + key + '"></p></div>';
+  wrap.innerHTML = html;
 
-function makeQuiz(containerId, bank, key){
- const box=document.getElementById(containerId);
- box.innerHTML=bank.map((q,i)=>`<div class="q" data-key="${key}" data-index="${i}" data-answer="${q[2]}" >
- <div class="qnum">Question ${i+1} / Questão ${i+1}</div>
- <h3><span class="english">${q[0]}</span><br><span class="translation">${q[1]}</span></h3>
- <div class="options">${q[2].map((o,j)=>`<button class="option" onclick="answer(this,${j},${q[3]})">${o}</button>`).join("")}</div>
- <div class="feedback"></div><div class="answer">💡 ${q[2][q[3]]}</div>
- </div>`).join("");
+  var qsBox = document.getElementById('qs-' + key);
+
+  data.questions.forEach(function(item, i){
+    var q = document.createElement('div');
+    q.className = 'q';
+    var opts = '';
+    item.options.forEach(function(opt, j){
+      opts += '<button class="option" data-i="' + j + '">' + opt + '</button>';
+    });
+    q.innerHTML = '<div class="qnum">Questão ' + (i+1) + ' de ' + total + '</div>'
+      + '<h4>' + item.q + '</h4>'
+      + '<div class="options">' + opts + '</div>'
+      + '<div class="feedback"></div>';
+
+    q.querySelectorAll('.option').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if(q.classList.contains('answered')) return;
+        var chosen = parseInt(btn.dataset.i, 10);
+        var ok = chosen === item.answer;
+        q.classList.add('answered', ok ? 'correct' : 'wrong');
+        q.querySelectorAll('.option').forEach(function(b, j){
+          b.disabled = true;
+          if(j === item.answer) b.classList.add('correct');
+          else if(j === chosen) b.classList.add('wrong');
+        });
+        q.querySelector('.feedback').innerHTML =
+          (ok ? '✅ <b>Correto!</b> ' : '❌ <b>Ainda não.</b> A resposta certa é: <b>' + item.options[item.answer] + '</b>. ')
+          + item.why;
+        state.answered++;
+        if(ok) state.correct++;
+        updateQuiz(key, state, total);
+      });
+    });
+    qsBox.appendChild(q);
+  });
+
+  document.getElementById('reset-' + key).addEventListener('click', function(){
+    buildQuiz(key);
+    wrap.scrollIntoView({behavior:'smooth', block:'start'});
+  });
 }
-function answer(btn,chosen,correct){
- const q=btn.closest(".q"); if(q.classList.contains("revealed")) return;
- [...q.querySelectorAll(".option")].forEach(x=>x.disabled=true);
- if(chosen===correct){btn.classList.add("correct");q.classList.add("correct");q.querySelector(".feedback").textContent="✅ Correct! / Correto!"; addScore(1)}
- else{btn.classList.add("wrong");q.classList.add("wrong");q.querySelector(".feedback").textContent="❌ Not quite. / Ainda não. Veja a resposta abaixo.";q.querySelectorAll(".option")[correct].classList.add("correct")}
- q.classList.add("revealed");
- updateProgress();
+
+function updateQuiz(key, state, total){
+  document.getElementById('counter-' + key).textContent = state.answered + ' / ' + total + ' respondidas';
+  document.getElementById('progress-' + key).style.width = (state.answered / total * 100) + '%';
+  if(state.answered === total){
+    var res = document.getElementById('result-' + key);
+    var msg;
+    if(state.correct === total) msg = 'Excelente! Você domina este tema. 🍁';
+    else if(state.correct >= Math.ceil(total * 0.6)) msg = 'Bom trabalho! Releia os trechos das questões que você errou e tente novamente.';
+    else msg = 'Vale reler o texto desta seção com calma e refazer o quiz. Você consegue!';
+    document.getElementById('score-' + key).textContent = state.correct + ' / ' + total + ' acertos';
+    document.getElementById('msg-' + key).textContent = msg;
+    res.classList.add('show');
+  }
 }
-let totalAnswered=0, totalCorrect=0;
-function addScore(n){totalCorrect+=n}
-function updateProgress(){const all=document.querySelectorAll("#megaQuiz .q");const done=document.querySelectorAll("#megaQuiz .q.revealed").length;document.getElementById("progress").style.width=(done/all.length*100)+"%"}
-function finishQuiz(){
- const all=document.querySelectorAll("#megaQuiz .q"); const done=document.querySelectorAll("#megaQuiz .q.revealed").length;
- if(done<all.length){alert("Responda todas as questões antes de finalizar! / Answer all questions first!");return}
- let correct=document.querySelectorAll("#megaQuiz .q.correct").length, pct=Math.round(correct/all.length*100);
- const msg=pct>=90?"🌟 Amazing explorer! / Explorador incrível!":pct>=70?"🚀 Great job! / Muito bem!":pct>=50?"👏 Keep practicing! / Continue praticando!":"💪 Don't give up! / Não desista!";
- const r=document.getElementById("result");r.classList.add("show");r.innerHTML=`<div class="score">${correct}/${all.length}</div><h3>${msg}</h3><p>${pct}% de aproveitamento. Revise os cards e tente novamente para superar sua pontuação.</p>`;
-}
-function resetQuiz(){document.querySelectorAll("#megaQuiz .q").forEach(q=>{q.className="q";q.querySelectorAll(".option").forEach(b=>{b.disabled=false;b.className="option"});q.querySelector(".feedback").textContent=""});document.getElementById("result").classList.remove("show");document.getElementById("progress").style.width="0"}
-function finishSection(id){
- const all=document.querySelectorAll("#"+id+" .q"); const done=document.querySelectorAll("#"+id+" .q.revealed").length;
- if(done<all.length){alert("Responda todas as questões primeiro!");return}
-}
-function makeChallenge(){
- const box=document.getElementById("challengeQuiz");
- box.innerHTML=challenge.map((q,i)=>`<div class="q" data-answer="${q[3]}">
- <div class="qnum">Final ${i+1} / Final ${i+1}</div>
- <h3><span class="english">${q[0]}</span><br><span class="translation">${q[1]}</span></h3>
- <div class="options">${q[2].map((o,j)=>`<button class="option" onclick="answer(this,${j},${q[3]})">${o}</button>`).join("")}</div>
- <div class="feedback"></div><div class="answer">💡 ${q[2][q[3]]}</div></div>`).join("");
-}
-function finishChallenge(){
- const all=document.querySelectorAll("#challengeQuiz .q"),done=document.querySelectorAll("#challengeQuiz .q.revealed").length;
- if(done<all.length){alert("Complete as 5 questões! / Complete all 5 questions!");return}
- const correct=document.querySelectorAll("#challengeQuiz .q.correct").length;
- const r=document.getElementById("challengeResult");r.classList.add("show");
- r.innerHTML=`<div class="score">${correct}/5</div><h3>${correct===5?"🏆 PERFECT! / PERFEITO!":"🌎 World Explorer! / Explorador do Mundo!"}</h3><p>Você terminou o desafio final. Muito bom trabalho!</p>`;
-}
-function resetChallenge(){makeChallenge();document.getElementById("challengeResult").classList.remove("show")}
-function init(){
- makeQuiz("peruQuiz",banks.peru,"peru");makeQuiz("maliQuiz",banks.mali,"mali");makeQuiz("compareQuiz",banks.compare,"compare");makeQuiz("megaQuiz",mega,"mega");makeChallenge();
- document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));document.getElementById(b.dataset.go).classList.add("active");window.scrollTo({top:0,behavior:"smooth"})});
-}
-init();
+
+Object.keys(QUIZZES).forEach(buildQuiz);
 </script>
 </body>
 </html>
